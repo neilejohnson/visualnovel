@@ -44,17 +44,29 @@ body {
     background-color: black;
 }
 
-.setting-front {
+#setting-front {
     position: absolute;
 }
 
-.char1 {
+#settingBack {
+    width: 100%;
+    height: auto;
+}
+
+#imgLeft {
     position: absolute;
     left: 0;
     bottom: 0;
 }
 
-.char2 {
+#imgCenter {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+#imgRight {
     position: absolute;
     right: 0;
     bottom: 0;

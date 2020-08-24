@@ -1,74 +1,22 @@
 console.log(data["1"]['general_mode'])
+////////  ^ access data by data[string value of node][string value of key]
+
+// Starting node - targeting first node to begin game
+let currentNode=data['1'];
 
 /////////////////////////////////
 ///// inialize dom elements /////
 /////////////////////////////////
 
-const settingFront = document.querySelector('#setting-front');
-const char1 = document.querySelector('#char1');
-const char2 = document.querySelector('#char2');
+const settingBack = document.querySelector('#settingBack');
+const settingMid = document.querySelector('#settingMid');
+const settingFront = document.querySelector('#settingFront');
+const imgLeft = document.querySelector('#imgLeft');
+const imgCenter = document.querySelector('#imgCenter');
+const imgRight = document.querySelector('#imgRight');
 const text1 = document.querySelector('#text1');
 const text2 = document.querySelector('#text2');
 const text3 = document.querySelector('#text3');
-
-text1.innerHTML="this is it"
-
-//will be using a lot of ternary operators
-// condition ? exprIfTrue : exprIfFalse
-
-////////////////////////////
-///// master node list /////
-////////////////////////////
-
-const nodes = {
-    node1: {
-        settingFront: 'img/hht_rough_forest01.19.jpg',
-        mode: 'text',
-        char1: 'img/char.png',
-        char2: 'img/char2.png',
-        text1: 'line 1 text',
-        text2: 'some more',
-        text3: 'even more text',
-        output1: 'node2',
-        output2: 'node2',
-        output3: 'node3',
-        output: 'node2'
-    },
-
-    node2: {
-        settingFront: '',
-        mode: 'option',
-        char1: 'img/char2.png',
-        char2: 'img/char.png',
-        text1: 'texty',
-        text2: 'test',
-        text3: 'woo',
-        output1: 'node1',
-        output2: 'node1',
-        output3: 'node3',
-        output: 'node3'
-    },
-
-    node3: {
-        settingFront: '',
-        mode: 'text',
-        char1: 'img/char2.png',
-        char2: 'img/char.png',
-        text1: 'texty',
-        text2: 'test',
-        text3: 'another one',
-        output1: 'node1',
-        output2: 'node1',
-        output3: 'node2',
-        output: 'node1'
-    }
-}
-
-let currentNode=nodes['node1'];
-
-settingFront.src=currentNode['settingFront'];
-char1.src=currentNode['char1'];
-char2.src=currentNode['char2'];
 
 ////////////////////////////////////
 ///// event listener on button /////
@@ -76,21 +24,59 @@ char2.src=currentNode['char2'];
 
 const btn = document.querySelector("button");
 
-//redefining node
-//displaying new info.
+/////////////////////////
+///// MAIN FUNCTION /////
+/////////////////////////
 
-// function updateNode(starterNode) {
-//     return starterNode['output']
-// }
+defineSettingMode(currentNode);
 
 const nextNode = () => {
-    currentNode=nodes[currentNode['output']];
-    settingFront.src=currentNode['settingFront'];
-    char1.src=currentNode['char1'];
-    char2.src=currentNode['char2'];
+    // runs all code for setting up backgrounds
+    defineSettingMode(currentNode);
+    switch(currentNode['general_mode']) {
+        case 'text':
+            console.log('text');
+            //display next button
+            //display name if there is one
+            break;
+        case 'option':
+            console.log('option');
+            //display text1,2,3 as option
+            break;
+        case 'scene':
+            console.log('scene');
+            //entire text box will not be displayed
+    }
+       
     if (!currentNode['text1']) { text1.innerHTML='&nbsp'; } else text1.innerHTML=currentNode['text1'];
     if (!currentNode['text2']) { text2.innerHTML='&nbsp'; } else text3.innerHTML=currentNode['text2'];
     if (!currentNode['text3']) { text3.innerHTML='&nbsp'; } else text3.innerHTML=currentNode['text3'];
+}
+
+////////////////////////////
+///// SETTING FUNCTION /////
+////////////////////////////
+
+function defineSettingMode(selectedNode) {
+    switch(selectedNode['setting_mode']) {
+        default:
+            break;
+//no breaks here as it makes more sense for these to be stacked
+        case 'three':
+            settingMid.src=currentNode['setting_front'];
+            if (currentNode['setting_front_animation']) settingFront.classList.add(currentNode['setting_front_animation']); 
+            if (currentNode['setting_front_opacity']) settingFront.style.opacity = currentNode['setting_front_opacity'];     
+        case 'two':
+            settingMid.src=currentNode['setting_mid'];
+            if (currentNode['setting_mid_animation']) settingMid.classList.add(currentNode['setting_mid_animation']); 
+            if (currentNode['setting_mid_opacity']) settingMid.style.opacity = currentNode['setting_mid_opacity'];     
+        case 'one':
+            if (currentNode['setting_back_animation']) settingBack.classList.add(currentNode['setting_back_animation']); 
+            if (currentNode['setting_back_opacity']) settingBack.style.opacity = currentNode['setting_back_opacity'];          
+        case 'simple':
+            settingBack.src=currentNode['setting_back'];
+        //if opacity is declared, must remove that style for next node
+    }
 }
 
 btn.addEventListener("click", nextNode);
