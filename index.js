@@ -1,8 +1,10 @@
+console.log(data["1"]['general_mode'])
+
 /////////////////////////////////
 ///// inialize dom elements /////
 /////////////////////////////////
 
-const setting = document.querySelector('#setting');
+const settingFront = document.querySelector('#setting-front');
 const char1 = document.querySelector('#char1');
 const char2 = document.querySelector('#char2');
 const text1 = document.querySelector('#text1');
@@ -11,45 +13,60 @@ const text3 = document.querySelector('#text3');
 
 text1.innerHTML="this is it"
 
+//will be using a lot of ternary operators
+// condition ? exprIfTrue : exprIfFalse
+
 ////////////////////////////
 ///// master node list /////
 ////////////////////////////
 
 const nodes = {
     node1: {
-        setting: 'img/hht_rough_forest01.19.jpg',
+        settingFront: 'img/hht_rough_forest01.19.jpg',
+        mode: 'text',
         char1: 'img/char.png',
         char2: 'img/char2.png',
         text1: 'line 1 text',
         text2: 'some more',
         text3: 'even more text',
+        output1: 'node2',
+        output2: 'node2',
+        output3: 'node3',
         output: 'node2'
     },
 
     node2: {
-        setting: '',
+        settingFront: '',
+        mode: 'option',
         char1: 'img/char2.png',
         char2: 'img/char.png',
         text1: 'texty',
         text2: 'test',
         text3: 'woo',
+        output1: 'node1',
+        output2: 'node1',
+        output3: 'node3',
         output: 'node3'
     },
 
     node3: {
-        setting: '',
+        settingFront: '',
+        mode: 'text',
         char1: 'img/char2.png',
         char2: 'img/char.png',
         text1: 'texty',
         text2: 'test',
         text3: 'another one',
+        output1: 'node1',
+        output2: 'node1',
+        output3: 'node2',
         output: 'node1'
     }
 }
 
 let currentNode=nodes['node1'];
 
-setting.src=currentNode['setting'];
+settingFront.src=currentNode['settingFront'];
 char1.src=currentNode['char1'];
 char2.src=currentNode['char2'];
 
@@ -68,7 +85,7 @@ const btn = document.querySelector("button");
 
 const nextNode = () => {
     currentNode=nodes[currentNode['output']];
-    setting.src=currentNode['setting'];
+    settingFront.src=currentNode['settingFront'];
     char1.src=currentNode['char1'];
     char2.src=currentNode['char2'];
     if (!currentNode['text1']) { text1.innerHTML='&nbsp'; } else text1.innerHTML=currentNode['text1'];
