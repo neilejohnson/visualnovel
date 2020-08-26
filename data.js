@@ -1,8 +1,22 @@
+const config = {
+    "font: Arial": {
+        "default_font": "font: Arial",
+        "default_text_color": "#add8e6",
+        "default_background_color": "black",
+        "text_box_img": "",
+        "name_box_img": "",
+        "option_button_color": "",
+        "option_button_color_hover": "",
+        "text_speed": "",
+        "text_sound": ""
+    }
+}
+
 const data = {
     "1": {
         "node_id": "1",
         "display_mode": "simple",
-        "sound": "",
+        "sound": "sound/sound.wav",
         "setting_mode": "one",
         "setting_back": "img/hht_rough_forest01.19.jpg",
         "setting_back_animation": "",
@@ -29,13 +43,10 @@ const data = {
         "option_1_output": "",
         "option_2_output": "",
         "option_3_output": "",
-        "img_left": "",
+        "img_left": "img/char.png",
         "img_center": "",
         "img_right": "",
-        "img_left_reverse": "",
-        "img_center_reverse": "",
-        "img_right_reverse": "",
-        "img_left_animation": "",
+        "img_left_animation": "slideRight reverse",
         "img_center_animation": "",
         "img_right_animation": "",
         "scene_length": "",
@@ -74,9 +85,6 @@ const data = {
         "img_left": "",
         "img_center": "",
         "img_right": "",
-        "img_left_reverse": "",
-        "img_center_reverse": "",
-        "img_right_reverse": "",
         "img_left_animation": "",
         "img_center_animation": "",
         "img_right_animation": "",

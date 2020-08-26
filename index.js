@@ -1,4 +1,4 @@
-console.log(data["1"]['general_mode'])
+console.log(config)
 ////////  ^ access data by data[string value of node][string value of key]
 
 // Starting node - targeting first node to begin game
@@ -8,6 +8,7 @@ let currentNode=data['1'];
 ///// inialize dom elements /////
 /////////////////////////////////
 
+const game = document.querySelector('#game');
 const settingBack = document.querySelector('#settingBack');
 const settingMid = document.querySelector('#settingMid');
 const settingFront = document.querySelector('#settingFront');
@@ -28,11 +29,16 @@ const btn = document.querySelector("button");
 ///// MAIN FUNCTION /////
 /////////////////////////
 
+//sound throws everything else off for some reason even though it looks like that code ran
+// if (currentNode['sound']) { playSound(currentNode) };
 defineSettingMode(currentNode);
+displayImages(currentNode);
+
 
 const nextNode = () => {
     // runs all code for setting up backgrounds
     defineSettingMode(currentNode);
+
     switch(currentNode['general_mode']) {
         case 'text':
             console.log('text');
@@ -75,9 +81,39 @@ function defineSettingMode(selectedNode) {
             if (currentNode['setting_back_opacity']) settingBack.style.opacity = currentNode['setting_back_opacity'];          
         case 'simple':
             settingBack.src=currentNode['setting_back'];
+
         //if opacity is declared, must remove that style for next node
     }
 }
+
+function displayImages (selectedNode) {
+    if (selectedNode['img_left']) {
+        imgLeft.src=selectedNode['img_left']; 
+        if (selectedNode['img_left_animation']) imgLeft.className=selectedNode['img_left_animation'];
+    }
+    if (selectedNode['img_center']) {
+        imgCenter.src=selectedNode['img_center']; 
+        if (selectedNode['img_center_animation']) imgCenter.classList.add(selectedNode['img_center_animation']);
+    }
+    if (selectedNode['img_right']) {
+        imgLeft.src=selectedNode['img_right']; 
+        if (selectedNode['img_right_animation']) imgRight.classList.add(selectedNode['img_right_animation']);
+    }
+}
+
+
+//research sound. This breaks the program but should work
+// function playSound(selectedNode) {
+//     game.innerHTML+=('<audio src="'+selectedNode['sound']+'" id="sound"></audio>');
+//     var sound = document.querySelector('#sound');
+//     var soundFlag = true;
+//     if (soundFlag) {
+//         sound.pause();
+//         sound.currentTime = 0;
+//         sound.play();
+//         soundFlag = false;
+//     }
+// }
 
 btn.addEventListener("click", nextNode);
 

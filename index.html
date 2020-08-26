@@ -2,19 +2,20 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="game">
-            <section class="art row">
+        <div id="game">
+            <section class="row" id="art">
                 <!-- Setting -->
                 <img id="settingBack" src="">
                 <img id="settingMid" src="">
                 <img id="settingFront" src="">
                 <!-- images -->
-                <img class="slideRight" id="imgLeft" src="">
-                <img class="" id="imgCenter" src="">
-                <img class="slideLeft" id="imgRight" src="">               
-                
+                <img id="imgLeft" src="">
+                <img id="imgCenter" src="">
+                <img id="imgRight" src="">
                 <div class="text-window row">
                     <p id="name-field">NAME</p>
                     <ul class="dialogue">
@@ -27,6 +28,7 @@
             </section>
             </div>
         <script src="data.js"></script>
+        <script src="config.js"></script>
         <script src="index.js"></script>
     </body>
 </html>

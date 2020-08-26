@@ -10,7 +10,8 @@
 }
 
 body {
-    font-size: 20px;
+    font-size: 16px;
+    font-family: 'Press Start 2P', cursive;
 }
 
 /* encompasses both the art window and the diologue window */
@@ -26,20 +27,19 @@ body {
 /* ART */
 /* ---------------------------- */
 
-
-.game {
+#game {
     /* complete size of game window */
-    width: 747px;
+    width: 960px;
     /* location of game window */
     margin-top: 20px;
     margin-left: 40px;
 }
 
-.art {
+#art {
     /* complete size of art section */
     position: relative;
-    width: 747px;
-    height: 427px;
+    width: 960px;
+    height: 540px;
     overflow: hidden;
     background-color: black;
 }
@@ -78,7 +78,8 @@ body {
 
 .text-window {
     background-color: gray;
-    width: 300px;
+    width: 500px;
+    height: 160px;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
@@ -158,4 +159,8 @@ button {
 
 .hide {
     display: none;
+}
+
+.reverse {
+    transform: scaleX(-1);
 }
