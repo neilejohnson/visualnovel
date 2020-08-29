@@ -1,15 +1,15 @@
 const config = {
-    "font: Arial": {
-        "default_font": "font: Arial",
-        "default_text_color": "#add8e6",
-        "default_background_color": "black",
-        "text_box_img": "",
-        "name_box_img": "",
-        "option_button_color": "",
-        "option_button_color_hover": "",
-        "text_speed": "",
-        "text_sound": ""
-    }
+    "default_font": "",
+    "default_font_size": "16",
+    "default_text_color": "white",
+    "default_background_color": "",
+    "text_box_img": "text-window.png",
+    "name_box_img": "",
+    "next_button_img": "",
+    "option_button_color": "",
+    "option_button_color_hover": "",
+    "text_speed": "",
+    "text_sound": ""
 }
 
 const data = {

@@ -9,31 +9,19 @@
     margin: 0 auto;
 }
 
-body {
-    font-size: 16px;
-    font-family: 'Press Start 2P', cursive;
-}
-
-/* encompasses both the art window and the diologue window */
-/* .game {
-    margin-top: 30px;
-    margin-left: 30px;
-    height: 550px;
-    width: 850px;
-    background-color: black;
-} */
-
-/* ---------------------------- */
-/* ART */
-/* ---------------------------- */
-
 #game {
     /* complete size of game window */
     width: 960px;
     /* location of game window */
     margin-top: 20px;
     margin-left: 40px;
+    font-family: 'Press Start 2P';
+    /* background-color: black; */
 }
+
+/* ---------------------------- */
+/* ART */
+/* ---------------------------- */
 
 #art {
     /* complete size of art section */
@@ -41,7 +29,7 @@ body {
     width: 960px;
     height: 540px;
     overflow: hidden;
-    background-color: black;
+
 }
 
 #setting-front {
@@ -76,21 +64,35 @@ body {
 /* TEXT */
 /* ---------------------------- */
 
-.text-window {
-    background-color: gray;
+#text-window {
+    position: absolute;
     width: 500px;
     height: 160px;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
-    position: absolute;
 }
 
 #name-field {
+    position: absolute;
     color: lightblue;
+    height: 30px;
+    top: -14px;
+    background-color: #43b84e;
+    border: 3px solid;
+    border-radius: 6px;
+}
+
+#name-field p {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .dialogue {
+    position: relative;
+    right: 20px;
+    top: 30px;
     list-style: none;
     margin-left: 50px;
     margin-right: 50px;
@@ -100,8 +102,7 @@ body {
 
 .dialogue li {
     display: block;
-    color: white;
-    padding: 5px 0;
+    padding: 10px 10px;
 }
 
 .option {
@@ -115,8 +116,20 @@ body {
     cursor: pointer;
 }
 
-button {
-    margin-left: 90%;
+#next-btn {
+    display: none;
+}
+
+#next {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    right: -10px;
+    background-image: url('img/next-botton.png');
+}
+
+#next:hover {
+    background-image: url('img/next-botton-hover.png');
 }
 
 /* ---------------------------- */
@@ -163,4 +176,17 @@ button {
 
 .reverse {
     transform: scaleX(-1);
+}
+
+.left {
+    left: 10px;
+}
+
+.right {
+    right: 10px;
+}
+
+.center {
+    left: 50%;
+    transform: translateX(-50%);
 }

@@ -1,20 +1,21 @@
-//using the config object, this file will repopulate the html to it's default state
+//define game in setup instead of index
+const game = document.querySelector('#game');
+const textWindow = document.querySelector('#text-window')
 
-/////    default_font
-//add style to body to implement font.
-//config should pass CSS - font: Arial
+///// Font \\\\\
+//if google font, must specify it in style.css
+if (config['default_font']) game.style.fontFamily = config['default_font'];
+if (config['default_font_size']) game.style.fontSize = `${config['default_font_size']}px`;
 
-/////    default_font_size
-
-/////    default_text_color
+///// Text Color \\\\\
 //hex, rgb, or basic color name will do
+if (config['default_text_color']) game.style.color = config['default_text_color'];
 
-/////    default_background_color
-//same deal but leaving this blank will be black
+///// Background_color \\\\\
+game.style.backgroundColor = (config['default_background_color']) ? config['default_background_color'] : 'black';
 
-/////    text_box_img
-//should be a certain image size and parameter
-//if left blank will be gray
+///// text_box_img \\\\\
+textWindow.style.backgroundImage = `url("img/${config['text_box_img']}")`
 
 /////     name_box_img
 //point to image in img folder. should be a specific size

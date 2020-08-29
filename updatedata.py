@@ -7,10 +7,8 @@ with open (currDir + "config.csv", "r") as csvreader:
     headers = next(reader)
     config = {}
     for row in reader:
-        rowDict = {}
         for index, header in enumerate(headers):
-            rowDict[header] = row[index]
-        config[row[0]] = rowDict
+            config[header] = row[index]
 
 with open (currDir + "vndata.csv", "r") as csvreader:
     reader = csv.reader(csvreader)

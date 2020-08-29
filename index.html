@@ -7,7 +7,7 @@
     </head>
     <body>
         <div id="game">
-            <section class="row" id="art">
+            <section id="art">
                 <!-- Setting -->
                 <img id="settingBack" src="">
                 <img id="settingMid" src="">
@@ -16,20 +16,21 @@
                 <img id="imgLeft" src="">
                 <img id="imgCenter" src="">
                 <img id="imgRight" src="">
-                <div class="text-window row">
-                    <p id="name-field">NAME</p>
+                <div id="text-window" class="row">
+                    <div id="name-field" class="center"><p>&nbspMARTIN&nbsp</p></div>
                     <ul class="dialogue">
-                        <li class="option" id="text1">text row 1</li>
-                        <li class="option" id="text2">text row 2</li>
-                        <li class="option" id="text3">text row 3</li>
+                        <li id="text1"><p>text row 1</p></li>
+                        <li id="text2"><p>text row 2</p></li>
+                        <li id="text3"><p>&nbsp</p></li>
                     </ul>
-                    <button>Next</button>
+                    <!-- <button id="next-btn">Next</button> -->
+                    <div id="next"></div>
                 </div>
+
             </section>
-            </div>
+        </div>
         <script src="data.js"></script>
-        <script src="config.js"></script>
+        <script src="setup.js"></script>
         <script src="index.js"></script>
     </body>
 </html>
-

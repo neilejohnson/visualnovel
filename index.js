@@ -1,6 +1,3 @@
-console.log(config)
-////////  ^ access data by data[string value of node][string value of key]
-
 // Starting node - targeting first node to begin game
 let currentNode=data['1'];
 
@@ -8,7 +5,7 @@ let currentNode=data['1'];
 ///// inialize dom elements /////
 /////////////////////////////////
 
-const game = document.querySelector('#game');
+// game initialized in setup.js
 const settingBack = document.querySelector('#settingBack');
 const settingMid = document.querySelector('#settingMid');
 const settingFront = document.querySelector('#settingFront');
@@ -33,7 +30,6 @@ const btn = document.querySelector("button");
 // if (currentNode['sound']) { playSound(currentNode) };
 defineSettingMode(currentNode);
 displayImages(currentNode);
-
 
 const nextNode = () => {
     // runs all code for setting up backgrounds
@@ -100,7 +96,6 @@ function displayImages (selectedNode) {
         if (selectedNode['img_right_animation']) imgRight.classList.add(selectedNode['img_right_animation']);
     }
 }
-
 
 //research sound. This breaks the program but should work
 // function playSound(selectedNode) {
