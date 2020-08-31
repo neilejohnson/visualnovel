@@ -9,7 +9,7 @@ let currentNode=data['1'];
 const settingBack = document.querySelector('#settingBack');
 const settingMid = document.querySelector('#settingMid');
 const settingFront = document.querySelector('#settingFront');
-const imgLeft = document.querySelector('#imgLeft');
+const imgLeft = document.querySelector('#imgLeft'); 
 const imgCenter = document.querySelector('#imgCenter');
 const imgRight = document.querySelector('#imgRight');
 const text1 = document.querySelector('#text1');
@@ -31,11 +31,11 @@ const btn = document.querySelector("button");
 defineSettingMode(currentNode);
 displayImages(currentNode);
 
-const nextNode = () => {
+const nextNode = (selectedNode) => {
     // runs all code for setting up backgrounds
-    defineSettingMode(currentNode);
+    defineSettingMode(selectedNode);
 
-    switch(currentNode['general_mode']) {
+    switch(selectedNode['general_mode']) {
         case 'text':
             console.log('text');
             //display next button
@@ -47,6 +47,11 @@ const nextNode = () => {
             break;
         case 'scene':
             console.log('scene');
+            textWindow.classList.add('hide');
+            //defineSettingMode(selectedNode)
+            //setTimeout(nextNode, <scene length>, <outputnode>)
+            //timeout tied to scene length
+            //at timeout, currentNode['scene_output'] triggered
             //entire text box will not be displayed
     }
        
@@ -64,8 +69,9 @@ function defineSettingMode(selectedNode) {
         default:
             break;
 //no breaks here as it makes more sense for these to be stacked
+////may need to change these all to selectedNode check later
         case 'three':
-            settingMid.src=currentNode['setting_front'];
+            settingFront.src=selectedNode['setting_front'];
             if (currentNode['setting_front_animation']) settingFront.classList.add(currentNode['setting_front_animation']); 
             if (currentNode['setting_front_opacity']) settingFront.style.opacity = currentNode['setting_front_opacity'];     
         case 'two':
@@ -97,6 +103,7 @@ function displayImages (selectedNode) {
     }
 }
 
+
 //research sound. This breaks the program but should work
 // function playSound(selectedNode) {
 //     game.innerHTML+=('<audio src="'+selectedNode['sound']+'" id="sound"></audio>');
@@ -110,7 +117,7 @@ function displayImages (selectedNode) {
 //     }
 // }
 
-btn.addEventListener("click", nextNode);
+// btn.addEventListener("click", nextNode);
 
 
 

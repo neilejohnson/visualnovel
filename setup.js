@@ -17,7 +17,7 @@ game.style.backgroundColor = (config['default_background_color']) ? config['defa
 ///// text_box_img \\\\\
 textWindow.style.backgroundImage = `url("img/${config['text_box_img']}")`
 
-/////     name_box_img
+/////     name_box_img //will not include for now
 //point to image in img folder. should be a specific size
 
 /////     next_button_img

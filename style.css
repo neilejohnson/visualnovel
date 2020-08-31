@@ -15,8 +15,6 @@
     /* location of game window */
     margin-top: 20px;
     margin-left: 40px;
-    font-family: 'Press Start 2P';
-    /* background-color: black; */
 }
 
 /* ---------------------------- */
@@ -125,11 +123,6 @@
     height: 50px;
     width: 50px;
     right: -10px;
-    background-image: url('img/next-botton.png');
-}
-
-#next:hover {
-    background-image: url('img/next-botton-hover.png');
 }
 
 /* ---------------------------- */
