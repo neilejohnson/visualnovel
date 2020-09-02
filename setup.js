@@ -1,5 +1,27 @@
 //define game in setup instead of index
 const game = document.querySelector('#game');
+
+function refreshGameWindow() {
+    game.innerHTML=`<section id="art">
+    <img id="settingBack" src="">
+    <img id="settingMid" src="">
+    <img id="settingFront" src="">
+    <img id="imgLeft" src="">
+    <img id="imgCenter" src="">
+    <img id="imgRight" src="">
+    <div id="text-window" class="row">
+        <div id="name-field" class="center"><p></p></div>
+        <ul class="dialogue">
+            <li id="text1"><p>text row 1</p></li>
+            <li id="text2"><p>text row 2</p></li>
+            <li id="text3"><p></p></li>
+        </ul>
+        <!-- <button id="next-btn">Next</button> -->
+        <div id="next"></div>
+    </div>
+    </section>`
+} 
+
 const textWindow = document.querySelector('#text-window')
 
 ///// Font \\\\\
@@ -21,7 +43,7 @@ textWindow.style.backgroundImage = `url("img/${config['text_box_img']}")`
 //point to image in img folder. should be a specific size
 
 /////     next_button_img
-//small image for the next button
+//added in html style
 
 /////     option_button_color
 //hex, rgb, or basic color name will do

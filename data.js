@@ -6,6 +6,7 @@ const config = {
     "text_box_img": "text-window.png",
     "name_box_img": "",
     "next_button_img": "",
+    "next_button_img_hover": "",
     "option_button_color": "",
     "option_button_color_hover": "",
     "text_speed": "",
@@ -15,7 +16,7 @@ const config = {
 const data = {
     "1": {
         "node_id": "1",
-        "display_mode": "simple",
+        "display_mode": "scene",
         "sound": "sound/sound.wav",
         "setting_mode": "one",
         "setting_back": "img/hht_rough_forest01.19.jpg",
@@ -49,17 +50,17 @@ const data = {
         "img_left_animation": "slideRight reverse",
         "img_center_animation": "",
         "img_right_animation": "",
-        "scene_length": "",
-        "scene_output": ""
+        "scene_length": "2000",
+        "scene_output": "2"
     },
     "2": {
         "node_id": "2",
-        "display_mode": "",
-        "sound": "",
-        "setting_mode": "",
-        "setting_back": "",
+        "display_mode": "scene",
+        "sound": "sound/sound.wav",
+        "setting_mode": "one",
+        "setting_back": "img/hht_rough_forest01.19.jpg",
         "setting_back_animation": "",
-        "setting_back_opacity": "",
+        "setting_back_opacity": "0.8",
         "setting_mid": "",
         "setting_mid_animation": "",
         "setting_mid_opacity": "",
@@ -88,7 +89,7 @@ const data = {
         "img_left_animation": "",
         "img_center_animation": "",
         "img_right_animation": "",
-        "scene_length": "",
-        "scene_output": ""
+        "scene_length": "1000",
+        "scene_output": "1"
     }
 }

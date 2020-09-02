@@ -28,26 +28,36 @@ const btn = document.querySelector("button");
 
 //sound throws everything else off for some reason even though it looks like that code ran
 // if (currentNode['sound']) { playSound(currentNode) };
-defineSettingMode(currentNode);
-displayImages(currentNode);
+// defineSettingMode(currentNode);
+// displayImages(currentNode);
 
-const nextNode = (selectedNode) => {
-    // runs all code for setting up backgrounds
+// refreshGameWindow();
+
+nextNode(currentNode);
+
+function nextNode(selectedNode) {
+    // displaysBackground
     defineSettingMode(selectedNode);
-
-    switch(selectedNode['general_mode']) {
+    // displayCharacterImages
+    displayImages(currentNode);
+    //checks general mode
+    switch(selectedNode['display_mode']) {
+        //if text then it runs text only
         case 'text':
             console.log('text');
             //display next button
             //display name if there is one
             break;
+        //if option mode, will display option
         case 'option':
             console.log('option');
             //display text1,2,3 as option
             break;
         case 'scene':
-            console.log('scene');
+            //if scene then will display scene and set output on timer
             textWindow.classList.add('hide');
+            data[selectedNode['scene_output']]
+            setTimeout(nextNode, parseInt(selectedNode['scene_length']), data[selectedNode['scene_output']])
             //defineSettingMode(selectedNode)
             //setTimeout(nextNode, <scene length>, <outputnode>)
             //timeout tied to scene length
@@ -72,18 +82,17 @@ function defineSettingMode(selectedNode) {
 ////may need to change these all to selectedNode check later
         case 'three':
             settingFront.src=selectedNode['setting_front'];
-            if (currentNode['setting_front_animation']) settingFront.classList.add(currentNode['setting_front_animation']); 
-            if (currentNode['setting_front_opacity']) settingFront.style.opacity = currentNode['setting_front_opacity'];     
+            if (selectedNode['setting_front_animation']) settingFront.classList.add(selectedNode['setting_front_animation']); 
+            if (selectedNode['setting_front_opacity']) settingFront.style.opacity = selectedNode['setting_front_opacity'];     
         case 'two':
-            settingMid.src=currentNode['setting_mid'];
-            if (currentNode['setting_mid_animation']) settingMid.classList.add(currentNode['setting_mid_animation']); 
-            if (currentNode['setting_mid_opacity']) settingMid.style.opacity = currentNode['setting_mid_opacity'];     
+            settingMid.src=selectedNode['setting_mid'];
+            if (selectedNode['setting_mid_animation']) settingMid.classList.add(selectedNode['setting_mid_animation']); 
+            if (selectedNode['setting_mid_opacity']) settingMid.style.opacity = selectedNode['setting_mid_opacity'];     
         case 'one':
-            if (currentNode['setting_back_animation']) settingBack.classList.add(currentNode['setting_back_animation']); 
-            if (currentNode['setting_back_opacity']) settingBack.style.opacity = currentNode['setting_back_opacity'];          
+            if (selectedNode['setting_back_animation']) settingBack.classList.add(selectedNode['setting_back_animation']); 
+            if (selectedNode['setting_back_opacity']) settingBack.style.opacity = selectedNode['setting_back_opacity'];          
         case 'simple':
-            settingBack.src=currentNode['setting_back'];
-
+            settingBack.src=selectedNode['setting_back'];
         //if opacity is declared, must remove that style for next node
     }
 }
