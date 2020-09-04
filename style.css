@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    border: border-box;
 }
 
 .row {
@@ -30,19 +29,29 @@
 
 }
 
-#setting-front {
+#settingBack, #settingMid, #settingFront {
     position: absolute;
+    width: 100%;
+    height: auto;
 }
 
 #settingBack {
-    width: 100%;
-    height: auto;
+    z-index: 0;
+}
+
+#settingMid {
+    z-index: 1;
+}
+
+#settingFront {
+    z-index: 2;
 }
 
 #imgLeft {
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: 4;
 }
 
 #imgCenter {
@@ -50,12 +59,14 @@
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
+    z-index: 3;
 }
 
 #imgRight {
     position: absolute;
     right: 0;
     bottom: 0;
+    z-index: 5;
 }
 
 /* ---------------------------- */
@@ -184,4 +195,8 @@
 .center {
     left: 50%;
     transform: translateX(-50%);
+}
+
+.test {
+    display: none;
 }

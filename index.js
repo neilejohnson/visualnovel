@@ -31,7 +31,6 @@ const btn = document.querySelector("button");
 // defineSettingMode(currentNode);
 // displayImages(currentNode);
 
-// refreshGameWindow();
 
 nextNode(currentNode);
 
@@ -93,6 +92,11 @@ function defineSettingMode(selectedNode) {
             if (selectedNode['setting_back_opacity']) settingBack.style.opacity = selectedNode['setting_back_opacity'];          
         case 'simple':
             settingBack.src=selectedNode['setting_back'];
+            //create element
+            // let backdropBack = document.createElement('img');
+            // backdropBack.src=selectedNode['setting_back']
+            // game.appendChild(backdropBack);
+
         //if opacity is declared, must remove that style for next node
     }
 }
