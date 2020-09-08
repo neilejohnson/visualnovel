@@ -1,24 +1,28 @@
-let currentNode=data['1'];
+var currentNode = data['1'];
 
-let art = document.createElement('div')
+//ADD ART DIV
+const art = document.createElement('div')
 art.setAttribute('id', 'art')
 game.appendChild(art);
 
-addAllImages();
+nextNode()
 
-//iterate through background to add all images to background
+function nextNode() {
+    art.innerHTML='';
+    switch (currentNode['display_mode']) {
+        case 'scene':
+            addAllImages()
+            setTimeout( function() { 
+                currentNode = data[currentNode['scene_output']]; 
+                nextNode();
+            }, currentNode['scene_length']);
+            break;
+        case 'text':
+            break; 
+        case 'option':
+    };
+};
 
-// function nextNode(selectedNode) {
-//     // displaysBackground
-//     defineSettingMode(selectedNode);
-// }
-
-// function defineSettingMode(selectedNode) {
-//     switch(selectedNode['setting_mode']) {
-//         default:
-//             break;
-//         case 'simple':
-// }
 
 //function to add an img to a parent element and assign an id
 function addImg(parent, imgSrc, id, opacity, imgClass) {
@@ -40,6 +44,11 @@ function addAllImages() {
     addImg(art, currentNode['img_center'], 'imgCenter', 1, currentNode['img_center_animation']);
     addImg(art, currentNode['img_right'], 'imgRight', 1, currentNode['img_right_animation']);
 };
+
+function defineSceneOutput() {
+    currentNode = data[currentNode['scene_output']];
+};
+
 
 // function setBackground() {
 //     switch(currentNode['setting_mode']) {

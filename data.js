@@ -50,7 +50,7 @@ const data = {
         "img_left_animation": "slideRight reverse",
         "img_center_animation": "",
         "img_right_animation": "",
-        "scene_length": "2000",
+        "scene_length": "4000",
         "scene_output": "2"
     },
     "2": {
@@ -84,12 +84,12 @@ const data = {
         "option_2_output": "",
         "option_3_output": "",
         "img_left": "",
-        "img_center": "",
+        "img_center": "img/char.png",
         "img_right": "",
         "img_left_animation": "",
         "img_center_animation": "",
         "img_right_animation": "",
-        "scene_length": "1000",
+        "scene_length": "4000",
         "scene_output": "1"
     }
 }
