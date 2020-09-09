@@ -81,6 +81,7 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 4px;
+    z-index: 6;
 }
 
 #name-field {
@@ -99,7 +100,7 @@
     transform: translateY(-50%);
 }
 
-.dialogue {
+#dialogue {
     position: relative;
     right: 20px;
     top: 30px;
@@ -108,7 +109,7 @@
     font-size: 75%;
 }
 
-.dialogue li {
+#dialogue li {
     display: block;
     margin-top: 3px;
     padding: 10px 10px;

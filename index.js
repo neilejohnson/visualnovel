@@ -54,7 +54,7 @@ function nextNode(selectedNode) {
             break;
         case 'scene':
             //if scene then will display scene and set output on timer
-            textWindow.classList.add('hide');
+            // textWindow.classList.add('hide');
             data[selectedNode['scene_output']]
             setTimeout(nextNode, parseInt(selectedNode['scene_length']), data[selectedNode['scene_output']])
             //defineSettingMode(selectedNode)

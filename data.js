@@ -16,7 +16,7 @@ const config = {
 const data = {
     "1": {
         "node_id": "1",
-        "display_mode": "scene",
+        "display_mode": "text",
         "sound": "sound/sound.wav",
         "setting_mode": "three",
         "setting_back": "img/hht_rough_forest01.19.jpg",
@@ -30,10 +30,10 @@ const data = {
         "setting_front_opacity": "0.5",
         "text_color": "",
         "text_font": "",
-        "name": "",
-        "name_position": "",
-        "line_1_text": "",
-        "line_2_text": "",
+        "name": "Martin",
+        "name_position": "center",
+        "line_1_text": "text",
+        "line_2_text": "texty",
         "line_3_text": "",
         "next_output": "2",
         "option_description": "",
