@@ -102,22 +102,22 @@
 
 #dialogue {
     position: relative;
-    right: 20px;
+    right:30px;
     top: 30px;
     list-style: none;
-    margin-left: 50px;
-    font-size: 75%;
+    margin-left: 45px;
+    font-size: 70%;
 }
 
 #dialogue li {
     display: block;
     margin-top: 3px;
-    padding: 10px 10px;
+    padding: 5px 0 5px 15px;
     height: 12px;
-    width: 400px;
 }
 
 .option {
+    margin-bottom: 10px;
     background-color: green;
     /* border: solid 1px black; */
     border-radius: 4px;
@@ -128,15 +128,21 @@
     cursor: pointer;
 }
 
-#next-btn {
-    display: none;
-}
-
 #next {
     position: relative;
     height: 50px;
     width: 50px;
     right: -95%;
+}
+
+#optionDescription {
+    margin-top: 10px;
+    margin-left: 18px;
+    font-size: 70%;
+}
+
+.dialogueWithDescription {
+    top: 10px;
 }
 
 /* ---------------------------- */

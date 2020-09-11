@@ -1,6 +1,5 @@
 var currentNode = data['1'];
-
-
+const errorReport = []
 
 //ADD ART DIV
 const art = document.createElement('div')
@@ -15,7 +14,7 @@ function nextNode() {
     switch (currentNode['display_mode']) {
         case 'scene':
             setTimeout( function() { 
-                currentNode = data[currentNode['scene_output']]; 
+                currentNode = data[currentNode['output']]; 
                 nextNode();
             }, currentNode['scene_length']);
             break;
@@ -23,9 +22,10 @@ function nextNode() {
             addTextWindow();
             break; 
         case 'option':
+            addTextWindow();
+            break; 
     };
 };
-
 
 //function to add an img to a parent element and assign an id
 function addImg(parent, imgSrc, id, opacity, imgClass) {
@@ -52,6 +52,7 @@ function addTextWindow() {
     const newTextWindow = document.createElement('div');
     newTextWindow.setAttribute('id', 'text-window');
     newTextWindow.style.backgroundImage = `url("img/${config['text_box_img']}")`
+    //add name if present
     if (currentNode['name']) {
         const nameBox = document.createElement('div');
         nameBox.setAttribute('id', 'name-field');
@@ -61,23 +62,48 @@ function addTextWindow() {
         nameBox.appendChild(nameText);
         newTextWindow.appendChild(nameBox);
     }
+
+    if(currentNode['option_description']) {
+        const optionTextTop = document.createElement('div');
+        optionTextTop.setAttribute('id', 'optionDescription');
+        optionTextTop.innerText = currentNode['option_description']
+        newTextWindow.appendChild(optionTextTop);
+    }
+
+    //!!!!!!!!!!!!! make several classes for dialogue box.
     const dialogue = document.createElement('ul');
     dialogue.setAttribute('id', 'dialogue');
+    if (currentNode['option_description']) { dialogue.classList = 'dialogueWithDescription'; }
+
+    newTextWindow.appendChild(dialogue);
 
     //will probably have to come back and add a textList.forEach(function(item) {} ); use const li instead of const text1
-    
+
     const textNames = ['text1', 'text2', 'text3'];
     textNames.forEach(function(text) {
         const li = document.createElement('li');
         li.setAttribute('id', text);
-        li.innerText = 'hello';
+        if(currentNode['display_mode'] === 'text') {
+            li.innerText = currentNode[`line_${text.slice(-1)}_text`];
+        } else if (currentNode['display_mode'] === 'option') {
+            li.innerText = currentNode[`option_${text.slice(-1)}_text`];
+            li.classList = 'option';
+        } else {
+            errorReport.push("must declare 'display_mode' for this node");
+        }
         dialogue.appendChild(li);
     });
 
-    newTextWindow.appendChild(dialogue);
-    //if option then classname option
-
-
     art.appendChild(newTextWindow);
 
-}
+    if(currentNode['display_mode'] === 'text') {
+        const next = document.createElement('div');
+        next.setAttribute('id', 'next');
+        newTextWindow.appendChild(next);
+        next.addEventListener('click', () => {
+            currentNode = data[currentNode['output']]; 
+            nextNode();
+
+        });
+    }
+};
