@@ -70,10 +70,9 @@ function addTextWindow() {
         newTextWindow.appendChild(optionTextTop);
     }
 
-    //!!!!!!!!!!!!! make several classes for dialogue box.
     const dialogue = document.createElement('ul');
     dialogue.setAttribute('id', 'dialogue');
-    if (currentNode['option_description']) { dialogue.classList = 'dialogueWithDescription'; }
+    currentNode['option_description'] ? dialogue.classList = 'dialogueWithDescription': dialogue.classList = 'dialogueWithoutDescription'; 
 
     newTextWindow.appendChild(dialogue);
 
@@ -103,7 +102,17 @@ function addTextWindow() {
         next.addEventListener('click', () => {
             currentNode = data[currentNode['output']]; 
             nextNode();
-
         });
     }
+
+    if(currentNode['display_mode'] === 'option') {
+        textNames.forEach(function(text) {
+            document.getElementById(text).addEventListener('click', () => {
+                currentNode = data[currentNode[`option_${text.slice(-1)}_output`]]; 
+                nextNode();
+            });
+        })
+
+    }
+
 };
