@@ -94,7 +94,8 @@
     border-radius: 6px;
 }
 
-#name-field p {
+#name-field p,
+.option p {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -112,7 +113,7 @@
     display: block;
     margin-top: 3px;
     padding: 5px 0 5px 15px;
-    height: 12px;
+    height: 14px;
 }
 
 .option {

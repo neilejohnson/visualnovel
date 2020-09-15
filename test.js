@@ -1,7 +1,6 @@
 var currentNode = data['1'];
 const errorReport = []
 
-//ADD ART DIV
 const art = document.createElement('div')
 art.setAttribute('id', 'art')
 game.appendChild(art);
@@ -10,21 +9,15 @@ nextNode()
 
 function nextNode() {
     art.innerHTML='';
-    addAllImages()
-    switch (currentNode['display_mode']) {
-        case 'scene':
-            setTimeout( function() { 
-                currentNode = data[currentNode['output']]; 
-                nextNode();
-            }, currentNode['scene_length']);
-            break;
-        case 'text':
-            addTextWindow();
-            break; 
-        case 'option':
-            addTextWindow();
-            break; 
-    };
+    addAllImages();
+    if(currentNode['display_mode']==='scene') {
+        setTimeout( function() { 
+            currentNode = data[currentNode['output']]; 
+            nextNode();
+        }, currentNode['scene_length']);
+    } else {
+        addTextWindow();
+    }
 };
 
 //function to add an img to a parent element and assign an id
@@ -39,13 +32,13 @@ function addImg(parent, imgSrc, id, opacity, imgClass) {
 
 function addAllImages() {
     //backgrounds
-    addImg(art, currentNode['setting_front'], 'settingFront', currentNode['setting_front_opacity'], currentNode['setting_front_animation']);
-    addImg(art, currentNode['setting_mid'], 'settingMid', currentNode['setting_mid_opacity'], currentNode['setting_mid_animation']);
-    addImg(art, currentNode['setting_back'], 'settingBack', currentNode['setting_back_opacity'], currentNode['setting_back_animation']);
+    if(currentNode['setting_front']) { addImg(art, currentNode['setting_front'], 'settingFront', currentNode['setting_front_opacity'], currentNode['setting_front_animation']) };
+    if(currentNode['setting_mid']) { addImg(art, currentNode['setting_mid'], 'settingMid', currentNode['setting_mid_opacity'], currentNode['setting_mid_animation']) };
+    if(currentNode['setting_back']) { addImg(art, currentNode['setting_back'], 'settingBack', currentNode['setting_back_opacity'], currentNode['setting_back_animation']) };
     //characters
-    addImg(art, currentNode['img_left'], 'imgLeft', 1, currentNode['img_left_animation']);
-    addImg(art, currentNode['img_center'], 'imgCenter', 1, currentNode['img_center_animation']);
-    addImg(art, currentNode['img_right'], 'imgRight', 1, currentNode['img_right_animation']);
+    if(currentNode['img_left']) { addImg(art, currentNode['img_left'], 'imgLeft', currentNode['img_left_opacity'], currentNode['img_left_animation']) };
+    if(currentNode['img_center']) { addImg(art, currentNode['img_center'], 'imgCenter', currentNode['img_center_opacity'], currentNode['img_center_animation']) };
+    if(currentNode['img_right']) { addImg(art, currentNode['img_right'], 'imgRight', currentNode['img_right_opacity'], currentNode['img_right_animation'])};
 };
 
 function addTextWindow() {
@@ -76,19 +69,19 @@ function addTextWindow() {
 
     newTextWindow.appendChild(dialogue);
 
-    //will probably have to come back and add a textList.forEach(function(item) {} ); use const li instead of const text1
-
     const textNames = ['text1', 'text2', 'text3'];
     textNames.forEach(function(text) {
         const li = document.createElement('li');
         li.setAttribute('id', text);
+        const p = document.createElement('p');
+        li.appendChild(p);
         if(currentNode['display_mode'] === 'text') {
-            li.innerText = currentNode[`line_${text.slice(-1)}_text`];
+            p.innerText = currentNode[`line_${text.slice(-1)}_text`];
         } else if (currentNode['display_mode'] === 'option') {
-            li.innerText = currentNode[`option_${text.slice(-1)}_text`];
+            p.innerText = currentNode[`option_${text.slice(-1)}_text`];
             li.classList = 'option';
         } else {
-            errorReport.push("must declare 'display_mode' for this node");
+            errorReport.push("must declare correct 'display_mode' for this node ('scene', 'option', or 'text')");
         }
         dialogue.appendChild(li);
     });

@@ -1,4 +1,5 @@
 import csv, json, os
+from pprint import pprint
 
 currDir = os.getcwd() + "\\"
 
@@ -17,7 +18,8 @@ with open (currDir + "vndata.csv", "r") as csvreader:
     for row in reader:
         rowDict = {}
         for index, header in enumerate(headers):
-            rowDict[header] = row[index]
+            if row[index]:
+                rowDict[header] = row[index]
         data[row[0]] = rowDict
 
 with open("data.js", "w") as jsfile:
