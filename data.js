@@ -51,6 +51,7 @@ const data = {
         "option_1_output": "1",
         "option_2_output": "1",
         "option_3_output": "1",
-        "img_right": "img/char.png"
+        "img_right": "img/char.png",
+        "output": "1"
     }
 }
