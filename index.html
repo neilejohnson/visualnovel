@@ -7,35 +7,13 @@
         <style>
             /* will be added later with python */
             #next { background-image: url('img/next-botton.png'); }
-            #next:hover { background-image: url('img/next-botton-hover.png'); }
+            #next:hover { background-image: url('img/next-botton-hover.png'); cursor: pointer;}
             #game { font-family: 'Press Start 2P'; };
         </style>
     </head>
     <body>
-        <div id="game">
-            <div id="art">
-                <!-- Setting -->
-                <img id="settingBack" src="">
-                <img id="settingMid" src="">
-                <img id="settingFront" src="">
-                <!-- images -->
-                <img id="imgLeft" src="">
-                <img id="imgCenter" src="">
-                <img id="imgRight" src="">
-                <div id="text-window">
-                    <div id="name-field" class="center"><p>&nbspMARTIN&nbsp</p></div>
-                    <ul id="dialogue">
-                        <li id="text1" class="option"><p>text row 1</p></li>
-                        <li id="text2" class="option"><p>text row 2</p></li>
-                        <li id="text3"><p>&nbsp</p></li>
-                    </ul>
-                    <!-- <button id="next-btn">Next</button> -->
-                    <div id="next"></div>
-                </div>
-            </div>
-        </div>
-        <script src="data.js"></script>
-        <script src="setup.js"></script>
-        <script src="index.js"></script>
+        <div id="game"></div>
+        <button>initiate</button>
+        <script type='module' src="./index.js"></script>
     </body>
 </html>

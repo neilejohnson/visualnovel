@@ -27,3 +27,4 @@ with open("data.js", "w") as jsfile:
     json.dump(config, jsfile, indent=4)
     jsfile.write("\n\nconst data = ")
     json.dump(data, jsfile, indent=4)
+    jsfile.write("\n\nexport { config, data };")

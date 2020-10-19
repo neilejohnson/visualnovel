@@ -55,3 +55,5 @@ const data = {
         "output": "1"
     }
 }
+
+export { config, data };
