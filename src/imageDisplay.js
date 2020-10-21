@@ -8,6 +8,7 @@ export function addImg(parent, imgSrc, id, opacity, imgClass) {
     parent.appendChild(newImg);
 };
 
+//cycles through background and character images and adds them to parent element
 export function addAllImages(art, currentNode) {
     //backgrounds
     if(currentNode['setting_front']) { addImg(art, currentNode['setting_front'], 'settingFront', currentNode['setting_front_opacity'], currentNode['setting_front_animation']) };
