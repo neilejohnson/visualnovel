@@ -1,3 +1,6 @@
+import { config, data } from '../data.js'
+import { nextNode } from './nodeHandler.js'
+
 //Adds text box and text box functionality to game
 export function addTextWindow(art, currentNode, config) {
 
@@ -6,7 +9,7 @@ export function addTextWindow(art, currentNode, config) {
     newTextWindow.setAttribute('id', 'text-window');
     newTextWindow.style.backgroundImage = `url("img/${config['text_box_img']}")`
 
-    //if name, creates elements for name box and inserts it into newTextWindow div
+    //ADD NAME, IF SPECIFIED
     if (currentNode['name']) {
         const nameBox = document.createElement('div');
         nameBox.setAttribute('id', 'name-field');
@@ -17,7 +20,7 @@ export function addTextWindow(art, currentNode, config) {
         newTextWindow.appendChild(nameBox);
     }
 
-    //if option description, add option description
+    //ADD OPTION DESCRIPTION, IF SPECIFIED
     if(currentNode['option_description']) {
         const optionTextTop = document.createElement('div');
         optionTextTop.setAttribute('id', 'optionDescription');
@@ -25,35 +28,38 @@ export function addTextWindow(art, currentNode, config) {
         newTextWindow.appendChild(optionTextTop);
     }
 
-    //create ul that will hold dialogue. class name depends on existance of dialogueDescription
+    //ADD TEXT/OPTION BOX
     const dialogue = document.createElement('ul');
     dialogue.setAttribute('id', 'dialogue');
     currentNode['option_description'] ? dialogue.classList = 'dialogueWithDescription': dialogue.classList = 'dialogueWithoutDescription'; 
     newTextWindow.appendChild(dialogue);
 
-    //insert text into field. If option, defines class as option
-    const textNames = ['text1', 'text2', 'text3'];
+    //ADD TEXT LINES
+    var textNames = ['text1', 'text2', 'text3'];
     textNames.forEach(function(text) {
+        
+        //CREATE INDIVIDUAL LI ELEMENTS FOR EACH TEXT LINE
         const li = document.createElement('li');
         li.setAttribute('id', text);
         const p = document.createElement('p');
         li.appendChild(p);
-        if (currentNode['display_mode']) {
+
+        // if (currentNode['display_mode']) {
             //currently displaying everything as an option until I get text to work.
-        // if (currentNode['display_mode'] === 'option') {
+        if (currentNode['display_mode'] === 'option') {
             p.innerText = currentNode[`option_${text.slice(-1)}_text`];
             li.classList = 'option';
         }
         dialogue.appendChild(li);
     });
-
-    //if display mode is text, run type out text function
-    // if (currentNode['display_mode'] === 'text') { typeOutText() };
     
-    //last thing to add is the entire text window
+    //ADD TEXT WINDOW
     art.appendChild(newTextWindow);
 
-    //add all option event listeners
+    //if display mode is text, run type out text function
+    if (currentNode['display_mode'] === 'text') { typeOutText(currentNode, newTextWindow) };
+
+    //ADD EVENT LISTENERS TO OPTION
     if(currentNode['display_mode'] === 'option') {
         textNames.forEach(function(text) {
             document.getElementById(text).addEventListener('click', () => {
@@ -64,57 +70,61 @@ export function addTextWindow(art, currentNode, config) {
     }
 };
 
-//!!!!! work on this next
+//refactor so typeOutText is not recursive. all logic should be in next character
 
-function typeOutText() {
-    //initialize with starting point of text1 
-    if (typeof textBoxProgress === 'undefined') { var textBoxProgress = 'text1'; }
-    
-    //if next, add next, reset varialble and exit out of function early
-    if(textBoxProgress === 'next') { 
-        finallyAddNext(); 
-        //reset variagle to text1 for next time function is used
-        textBoxProgress = 'text1';
-        return;
-    };
-    
-    let textToAdd = currentNode[`line_${textBoxProgress.slice(-1)}_text`];
-    
-    //split text to add
-    textToAdd ? textToAdd = textToAdd.split('') : textToAdd = '';
+function typeOutText(currentNode, newTextWindow) {
 
-    //counter for current line
-    let counter = 0;
-
-    //grab div
     
-    setInterval(addCharacter, 85);
+    //create variables that target the text divs
+    const targetText1 = document.querySelector('#text1 p');
+    const targetText2 = document.querySelector('#text2 p');
+    const targetText3 = document.querySelector('#text3 p');
+
+    let textToAdd1 = currentNode['line_1_text'].slice().split('');
+    let textToAdd2 = currentNode['line_2_text'].slice().split('');
+    let textToAdd3 = currentNode['line_3_text'].slice().split('');
+
+    let textLength1 = textToAdd1.length;
+    let textLength2 = textToAdd2.length;
+    let textLength3 = textToAdd3.length;
+
+    const textInterval = setInterval(addCharacter, 85);
 
     function addCharacter() {
-        const p = document.getElementById(textBoxProgress);
-        console.log(textBoxProgress);
-        if(counter===textToAdd.length || !textToAdd) {
-            switch(textBoxProgress) {
-                case('text1'):
-                    typeOutText();
-                    clearInterval(addCharacter);
-                    textBoxProgress = 'text2';
-                    console.log(textBoxProgress);
-                    break;
-                case('text2'):
-                    typeOutText();
-                    clearInterval(addCharacter);
-                    textBoxProgress = 'text3';
-                    break;
-                case('text3'):
-                    typeOutText();
-                    clearInterval(addCharacter); 
-                    textBoxProgress = 'next';  
-            }
+        if(textLength1) { 
+            targetText1.innerHTML += textToAdd1.shift() 
+            textLength1--
+            typeSound()
+        } else if(textLength2) {
+            targetText2.innerHTML += textToAdd2.shift() 
+            textLength2--
+            typeSound()
+        } else if(textLength3) {
+            targetText3.innerHTML += textToAdd3.shift() 
+            textLength3--
+            typeSound()
         } else {
-            p.innerHTML += textToAdd[counter];
-            counter++;
-            // typeSound();
-        }
-    }
+            finallyAddNext(currentNode, newTextWindow);
+            clearInterval(textInterval);
+        };
+    };
+};
+
+function finallyAddNext(currentNode, newTextWindow) {
+    const next = document.createElement('div');
+    next.setAttribute('id', 'next');
+    newTextWindow.appendChild(next);
+    next.addEventListener('click', () => {
+        currentNode = data[currentNode['output']];
+        nextNode(art, currentNode, config);
+    });
+}
+
+//set to play audio type sound
+function typeSound() {
+    let audio = document.createElement('audio');
+    audio.src = 'sound/type.mp3'
+    audio.volume = .5;
+    audio.play()
+    audio = null;
 };

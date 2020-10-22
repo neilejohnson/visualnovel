@@ -1,5 +1,6 @@
 import { addImg, addAllImages } from './imageDisplay.js'
 import { addTextWindow } from './textDisplay.js'
+import { data } from '../data.js'
 
 export function nextNode(art, currentNode, config) {
     //clear art div
