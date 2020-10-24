@@ -1,28 +1,35 @@
-//define game in setup instead of index
-const game = document.querySelector('#game');
+import Game from './src/game.js'
+import { data, config } from './data.js'
 
-//ADDS div with id art to game
-// let art = document.createElement('div')
-// art.setAttribute('id', 'art')
-// game.appendChild(art);
+export function setup() {
+    //define game in setup instead of index
+    const gameWindow = document.querySelector('#gameWindow');
 
-const textWindow = document.querySelector('#text-window')
+    //create a new div with id of art to append to the game div
+    const art = document.createElement('div');
+    art.setAttribute('id', 'art');
+    gameWindow.appendChild(art);
 
-///// Font \\\\\
-//if google font, must specify it in style.css
-if (config['default_font']) game.style.fontFamily = config['default_font'];
-if (config['default_font_size']) game.style.fontSize = `${config['default_font_size']}px`;
+    const game = new Game(data, config, art)
 
-///// Text Color \\\\\
-//hex, rgb, or basic color name will do
-if (config['default_text_color']) game.style.color = config['default_text_color'];
+    ///// Font \\\\\
+    //if google font, must specify it in style.css
+    if (game.config['default_font']) gameWindow.style.fontFamily = game.config['default_font'];
+    if (game.config['default_font_size']) gameWindow.style.fontSize = `${game.config['default_font_size']}px`;
 
-///// Background_color \\\\\
-game.style.backgroundColor = (config['default_background_color']) ? config['default_background_color'] : 'black';
+    ///// Text Color \\\\\
+    //hex, rgb, or basic color name will do
+    if (game.config['default_text_color']) gameWindow.style.color = game.config['default_text_color'];
 
-///// text_box_img \\\\\
-//WILL BE ADDED LATER IN PYTHON
-textWindow.style.backgroundImage = `url("img/${config['text_box_img']}")`
+    ///// Background_color \\\\\
+    gameWindow.style.backgroundColor = (game.config['default_background_color']) ? game.config['default_background_color'] : 'black';
+
+    ///// text_box_img \\\\\
+    //WILL BE ADDED LATER IN PYTHON
+    textWindow.style.backgroundImage = `url("img/${game.config['text_box_img']}")`
+}
+
+
 
 /////     text_sound
 // short sound that will play when text is scrolling

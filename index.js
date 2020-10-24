@@ -1,12 +1,8 @@
-import { config, data } from './data.js'
 import { nextNode } from './src/nodeHandler.js'
+import { setup } from './src/setup.js'
 
-//declare first node from data
-var currentNode = data['1'];
+const game = setup();
 
-//create a new div with id of art to append to the game div
-const art = document.createElement('div');
-art.setAttribute('id', 'art');
-game.appendChild(art);
+console.log(game)
 
-nextNode(art, currentNode, config);
+nextNode(game);

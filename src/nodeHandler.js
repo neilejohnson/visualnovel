@@ -1,22 +1,22 @@
-import { addImg, addAllImages } from './imageDisplay.js'
+import { addAllImages } from './imageDisplay.js'
 import { addTextWindow } from './textDisplay.js'
 import { data } from '../data.js'
 
-export function nextNode(art, currentNode, config) {
+export function nextNode(game) {
     //clear art div
-    art.innerHTML='';
+    game.art.innerHTML = '';
     //add all images to the parent divW
-    addAllImages(art, currentNode);
+    addAllImages(game);
     //check if current node is scene
     //if so, automatically update current node and run function nextNode after set scene length
-    if(currentNode['display_mode']==='scene') {
+    if(game.currentNode['display_mode']==='scene') {
         setTimeout( function() { 
-            currentNode = data[currentNode['output']]; 
-            nextNode();
-        }, currentNode['scene_length']);
+            game.currentNode = data[game.currentNode['output']]; 
+            nextNode(game);
+        }, game.currentNode['scene_length']);
     //otherwise run function addTextWindow
     } else {
-        addTextWindow(art, currentNode, config);
+        addTextWindow(game);
     }
 
 };
