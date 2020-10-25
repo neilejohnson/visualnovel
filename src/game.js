@@ -4,5 +4,6 @@ export default class Game {
         this.config = config;
         this.art = art;
         this.currentNode = data['1'];
+        this.audio = []
     };
 };

@@ -1,5 +1,4 @@
 import csv, json, os
-from pprint import pprint
 
 currDir = os.getcwd() + "\\"
 
@@ -11,7 +10,7 @@ with open (currDir + "config.csv", "r") as csvreader:
         for index, header in enumerate(headers):
             config[header] = row[index]
 
-with open (currDir + "vndata.csv", "r") as csvreader:
+with open (currDir + "timeline.csv", "r") as csvreader:
     reader = csv.reader(csvreader)
     headers = next(reader)
     data = {}

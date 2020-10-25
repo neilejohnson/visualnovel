@@ -1,5 +1,5 @@
-import { config, data } from '../data.js'
 import { nextNode } from './nodeHandler.js'
+import { playSound } from './sound.js'
 
 //Adds text box and text box functionality to game
 export function addTextWindow(game) {
@@ -7,7 +7,7 @@ export function addTextWindow(game) {
     //adds text window element with id and displays config file defined text box image
     const newTextWindow = document.createElement('div');
     newTextWindow.setAttribute('id', 'text-window');
-    newTextWindow.style.backgroundImage = `url("img/${game.config['text_box_img']}")`
+    newTextWindow.style.backgroundImage = `url("./img/${game.config['text_box_img']}")`
 
     //ADD NAME, IF SPECIFIED
     if (game.currentNode['name']) {
@@ -18,15 +18,15 @@ export function addTextWindow(game) {
         nameText.innerHTML = `&nbsp${game.currentNode['name']}&nbsp`;
         nameBox.appendChild(nameText);
         newTextWindow.appendChild(nameBox);
-    }
+    };
 
     //ADD OPTION DESCRIPTION, IF SPECIFIED
     if(game.currentNode['option_description']) {
         const optionTextTop = document.createElement('div');
         optionTextTop.setAttribute('id', 'optionDescription');
-        optionTextTop.innerText = game.currentNode['option_description']
+        optionTextTop.innerText = game.currentNode['option_description'];
         newTextWindow.appendChild(optionTextTop);
-    }
+    };
 
     //ADD TEXT/OPTION BOX
     const dialogue = document.createElement('ul');
@@ -63,7 +63,7 @@ export function addTextWindow(game) {
     if(game.currentNode['display_mode'] === 'option') {
         textNames.forEach(function(text) {
             document.getElementById(text).addEventListener('click', () => {
-                game.currentNode = data[game.currentNode[`option_${text.slice(-1)}_output`]]; 
+                game.currentNode = game.data[game.currentNode[`option_${text.slice(-1)}_output`]]; 
                 nextNode(game);
             });
         })
@@ -93,15 +93,15 @@ function typeOutText(game, newTextWindow) {
         if(textLength1) { 
             targetText1.innerHTML += textToAdd1.shift() 
             textLength1--
-            typeSound()
+            playSound('type.mp3', .5)
         } else if(textLength2) {
             targetText2.innerHTML += textToAdd2.shift() 
             textLength2--
-            typeSound()
+            playSound('type.mp3', .5)
         } else if(textLength3) {
             targetText3.innerHTML += textToAdd3.shift() 
             textLength3--
-            typeSound()
+            playSound('type.mp3', .5)
         } else {
             finallyAddNext(game, newTextWindow);
             clearInterval(textInterval);
@@ -114,16 +114,9 @@ function finallyAddNext(game, newTextWindow) {
     next.setAttribute('id', 'next');
     newTextWindow.appendChild(next);
     next.addEventListener('click', () => {
-        game.currentNode = data[game.currentNode['output']];
+        game.currentNode = game.data[game.currentNode['output']];
         nextNode(game);
     });
 }
 
-//set to play audio type sound
-function typeSound() {
-    let audio = document.createElement('audio');
-    audio.src = 'sound/type.mp3'
-    audio.volume = .5;
-    audio.play()
-    audio = null;
-};
+
