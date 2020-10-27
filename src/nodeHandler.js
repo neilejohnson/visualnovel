@@ -1,6 +1,6 @@
 import { addAllImages } from './imageDisplay.js'
 import { addTextWindow } from './textDisplay.js'
-import { playSound, loopSound } from './sound.js'
+import { playSound, loopSound, fadeOutAudio } from './sound.js'
 
 export function nextNode(game) {
     //clear art div
@@ -9,7 +9,15 @@ export function nextNode(game) {
     //add all images to the parent divW
     addAllImages(game);
 
-    if(game.currentNode['sound']) loopSound(game.currentNode['sound'], .2);
+    if(game.currentNode['sound']) {
+        game.currentNode['sound_volume'] ? 
+            playSound(game.currentNode['sound'], game.currentNode['sound_volume']) : 
+            playSound(game.currentNode['sound']);
+    };
+
+    if(game.currentNode['loop_sound']) loopSound(game);
+
+    if(game.currentNode['fade_out_active_loop']) fadeOutAudio(game.audio[0]);
 
     if(game.currentNode['display_mode']==='end') return;
 

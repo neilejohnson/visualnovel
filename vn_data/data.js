@@ -19,7 +19,9 @@ const data = {
     "1": {
         "node_id": "1",
         "display_mode": "text",
-        "sound": "guitar.mp3",
+        "sound_volume": "0.3",
+        "loop_sound": "guitar.mp3",
+        "loop_sound_volume": "0.5",
         "setting_back": "hht_rough_forest01.19.jpg",
         "name": "Jordan",
         "name_position": "left",
@@ -44,6 +46,7 @@ const data = {
     "3": {
         "node_id": "3",
         "display_mode": "option",
+        "fade_out_active_loop": "y",
         "setting_back": "hht_rough_forest01.19.jpg",
         "option_description": "What would you like to do?",
         "option_1_text": "Go to work.",
