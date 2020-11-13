@@ -1,5 +1,5 @@
 node_id,display_mode,sound,sound_volume,loop_sound,loop_sound_volume,fade_out_active_loop,setting_back,setting_back_animation,setting_back_opacity,setting_mid,setting_mid_animation,setting_mid_opacity,setting_front,setting_front_animation,setting_front_opacity,text_color,name,name_position,line_1_text,line_2_text,line_3_text,option_description,option_description_color,option_1_text,option_2_text,option_3_text,option_1_output,option_2_output,option_3_output,img_left,img_center,img_right,img_left_animation,img_center_animation,img_right_animation,scene_length,output
-1,text,,,,,,hht_rough_forest01.19.jpg,slideLeft,,,,,,,,,Neil,left,Hey! Just wanted to say hi ,"base with you, this week has been ",wacky. What have you been up to?,,,,,,,,,char.png,,,,,,,2
+1,text,,,,,,hht_rough_forest01.19.jpg,,,,,,,,,,Neil,left,Hey! Just wanted to say hi and touch ,"base with you, this week has been ",wacky. What have you been up to?,,,,,,,,,char.png,,,,,,,2
 2,scene,,,,,,hht_rough_forest01.19.jpg,,0.8,,,,,,,,,,,,,,,,,,,,,,char.png,,,,,5000,3
-3,option,,,,,,hht_rough_forest01.19.jpg,,,,,,,,,,,,,,,What would you like to do?,,Go to work.,Stay home.,Do literally nothing.,4,4,4,,,char.png,,,,,
+3,option,,,,,,hht_rough_forest01.19.jpg,,,,,,,,,,,,,,,What would you like to do?,,Go to work.,Stay home.,,4,4,,,,char.png,,,,,
 4,end,,,,,,hht_rough_forest01.19.jpg,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

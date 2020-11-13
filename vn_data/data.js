@@ -20,15 +20,11 @@ const data = {
         "node_id": "1",
         "display_mode": "text",
         "setting_back": "hht_rough_forest01.19.jpg",
-        "setting_back_animation": "slideLeft",
         "name": "Neil",
         "name_position": "left",
-        "line_1_text": "Hey! Just wanted to say hi ",
+        "line_1_text": "Hey! Just wanted to say hi and touch ",
         "line_2_text": "base with you, this week has been ",
         "line_3_text": "wacky. What have you been up to?",
-        "option_1_text": "tset",
-        "option_2_text": "this is a test ",
-        "option_3_text": "another test",
         "img_left": "char.png",
         "output": "2"
     },
@@ -48,10 +44,8 @@ const data = {
         "option_description": "What would you like to do?",
         "option_1_text": "Go to work.",
         "option_2_text": "Stay home.",
-        "option_3_text": "Do literally nothing.",
         "option_1_output": "4",
         "option_2_output": "4",
-        "option_3_output": "4",
         "img_right": "char.png"
     },
     "4": {

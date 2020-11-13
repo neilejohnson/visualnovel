@@ -44,8 +44,9 @@ export function addTextWindow(game) {
         const p = document.createElement('p');
         li.appendChild(p);
 
-        // if (game.currentNode['display_mode']) {
-            //currently displaying everything as an option until I get text to work.
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //needs to be implemented. if no text given, display blank space without an event listener
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (game.currentNode['display_mode'] === 'option') {
             p.innerText = game.currentNode[`option_${text.slice(-1)}_text`];
             li.classList = 'option';
